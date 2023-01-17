@@ -1,158 +1,205 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
+    --font-size: 1em;
+    --font-regular: 400;
+    --font-bold: 700;
+    --font-family: 'Overpass', sans-serif;
     --orange: hsl(25, 97%, 53%);
     --white: hsl(0, 0%, 100%);
     --light-grey: hsl(217, 12%, 63%);
-    --medium-grey: hsl(216, 12%, 54%);
+    --medium-grey: hsl(216, 22%, 22%);
     --dark-blue: hsl(213, 19%, 18%);
-    --dark-blue-star: hsl(211, 20%, 22%);
     --very-dark-blue: hsl(216, 12%, 8%);
 }
 
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 body {
-    font-family: "Overpass", sans-serif;
-    font-size: 15px;
-    background-color: var(--very-dark-blue);
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
     min-height: 100vh;
+    background-color: var(--very-dark-blue);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    margin: 0;
+    padding: 0;
 }
 
-ul {
-    list-style: none;
-}
-
-button {
-    font-family: inherit;
+h1, h2, h3, h4, h5 {
+    font-weight: var(--font-bold);
+    line-height: calc(var(--font-size) * 1);
+    margin: 0;
+    padding: 0;
 }
 
 p {
-    line-height: 1.8;
+    font-weight: var(--font-regular);
+    line-height: calc(var(--font-size) * 1.6);
+    margin: 0;
+    padding: 0;
 }
 
-.container,
-.thank-you {
-    background-color: var(--dark-blue);
-    padding: 1.5rem;
-    border-radius: 0.625rem;
-    max-width: 400px;
+ol, ul {
+    list-style: none;
 }
 
-.container img {
-    background-color: var(--dark-blue-star);
-    padding: 0.5rem;
-    border-radius: 50%;
+input, textarea, button, select {
+    font: inherit;
+    color: inherit;
 }
 
-.container h1 {
-    color: #fff;
-    margin: 2rem 0 1rem;
+img, picture, svg, video, object {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
-.container p {
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.circle {
+    background-color: var(--medium-grey);
     color: var(--light-grey);
-    margin-bottom: 1rem;
-}
-
-.container ul {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-}
-
-.container ul li button {
-    width: 3rem;
-    height: 3rem;
-    border: none;
-    background-color: var(--dark-blue-star);
-    color: #fff;
-    padding-top: 0.2rem;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s;
+    font-weight: var(--font-regular);
+    box-shadow: 2px 2px 16px rgba(0, 0, 0 , 0.1);
 }
 
-.container ul li button:hover {
-    background-color: var(--orange);
+main {
+    display: grid;
+    place-items: center;
 }
 
-.container ul li button:focus {
-    background-color: var(--light-grey);
-}
-
-.btn-submit {
-    background-color: var(--orange);
-    color: #fff;
-    width: 100%;
-    padding: 0.8rem 0 0.6rem;
-    border: none;
-    border-radius: 30px;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-submit:hover {
-    background-color: #fff;
-    color: var(--orange);
-}
-
-.thank-you {
+.rating {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    gap: 1.5rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    min-width: 300px;
+    max-width: 350px;
+    padding: 1.5rem;
+    margin: 2rem;
+    border-radius: 16px;
+    transition: all .2s ease-out;
 }
 
-.thank-you img {
-    display: block;
-    margin: 0 auto 2rem;
+.heading {
+    font-weight: var(--font-bold);
 }
 
-.thank-you p.gray {
-    background-color: var(--dark-blue-star);
-    border-radius: 30px;
-    color: var(--orange);
-    padding: 0.2rem 0.5rem 0;
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-}
-
-.thank-you h2 {
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.thank-you p {
+.paragraph {
+    font-size: calc(var(--font-size) * 0.8);
+    font-weight: var(--font-regular);
     color: var(--light-grey);
-    margin-bottom: 2rem;
 }
 
-.hidden {
+.button {
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: .8rem 2rem;
+    margin: 0;
+    width: 100%;
+    border-radius: 32px;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0 , 0.2);
+    font-size: calc(var(--font-size) * 0.8);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+
+.button:hover {
+    background-color: var(--white);
+    color: var(--orange);
+}
+
+.rate-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rate-wrapper > input {
     display: none;
 }
 
-.attribution {
-    font-size: 14px;
-    text-align: center;
-    color: #fff;
-    margin-top: 2rem;
+.rate-wrapper > label {
+    cursor: pointer;
+    transition: all .1s ease-out;
 }
 
-.attribution a {
-    color: hsl(228, 45%, 44%);
+.rate-wrapper > label:hover {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.rate-wrapper > input:checked + label {
+    background-color: var(--light-grey);
+    color: var(--white);
+}
+
+.submit {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s ease-out;
+}
+
+.submit-rate-submitted {
+    font-weight: var(--font-regular);
+    color: var(--orange);
+    background-color: var(--medium-grey);
+    padding: .2rem .8rem;
+    width: fit-content;
+    border-radius: 32px;
+    opacity: 0.8;
+}
+
+.submit-heading {
+    font-weight: var(--font-bold);
+}
+
+.submit-paragraph {
+    font-size: calc(var(--font-size) * 0.8);
+    font-weight: var(--font-regular);
+    color: var(--light-grey);
+}
+
+.attribution {
+    text-align: center;
+    padding: 0 2rem;
+    color: var(--light-grey);
+}
+
+.attribution > p > a {
+    color: var(--orange);
+}
+
+.attribution > p > a:hover {
+    text-decoration: none;
 }
